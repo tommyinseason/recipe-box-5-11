@@ -1,0 +1,15 @@
+<p>Add a Recipe to $category.getName()</p>
+
+<ul>
+  #foreach ($recipe in $category.getRecipes())
+    <li>$recipe.getName()</li>
+  #end
+</ul>
+
+<form action='/categories/$category.getId()' method='post'>
+  <div class="form-group">
+    <label for="recipe">Enter a New Recipe for this Category:</label>
+    <input type= "text" class="form-control" id="recipe" name="recipe">
+  </div>
+  <button class="btn" type="submit">Submit</button>
+</form>

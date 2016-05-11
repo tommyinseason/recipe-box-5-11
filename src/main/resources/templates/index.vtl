@@ -1,0 +1,18 @@
+<h1>Welcome to you custom recipes</h1>
+
+#foreach ($category in $categories)
+  <p><a href="/categories/$category.getId()">$category.getName()</a></p>
+#end
+
+
+<form action='/categories' method='post'>
+  <div class="form-group">
+    <label for="name">Enter a New Category:</label>
+    <input type= "text" class="form-control" id="name" name="name">
+  </div>
+  <button class="btn" type="submit">Submit</button>
+</form>
+<h1>Recipes!</h1>
+
+<h3><a href="/categories">Categories</a></h3>
+<h3><a href="/recipes">Recipes</a></h3>

@@ -1,0 +1,9 @@
+<h3>Update recipe:</h3>
+
+<form action="/recipes/$recipe.getId()" method="post">
+  <label for="name">New name</label>
+  <input id="name" name="name" type="text" value="$recipe.getName()">
+  <button type="submit" class="btn btn-success">Update</button>
+</form>
+
+<p><a href="/recipes/$recipe.getId()">Back</a></p>

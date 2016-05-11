@@ -1,0 +1,28 @@
+<h1>All recipes</h1>
+
+<ul>
+  #foreach ($recipe in $recipes)
+    <li><a href="/recipes/$recipe.getId()">$recipe.getName()</a></li>
+  #end
+</ul>
+
+<p>Add a new recipe:</p>
+
+<form action="/recipes" method="post">
+  <label for="name">Recipe name</label>
+  <input id="name" name="name" type="text">
+  <label for="rating">Rate:</label>
+  <select id='rating' name='rating' type='text'>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+  </select>
+  <label for="the_recipe">Enter your recipe:</label>
+  <textarea class="form-control" rows="5" id="the_recipe"></textarea>
+
+  <button type="submit" class="btn btn-success">Add Recipe</button>
+</form>
+
+<p><a href="/">Home</a></p>
