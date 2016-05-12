@@ -12,6 +12,7 @@ public class App {
     get("/", (request, response) -> {
       HashMap<String, Object> model = new HashMap<String, Object>();
       model.put("categories", Category.all());
+      model.put("recipes", Recipe.all());
       model.put("template", "templates/index.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
@@ -34,8 +35,8 @@ public class App {
       HashMap<String, Object> model = new HashMap<String, Object>();
       String name = request.queryParams("name");
       String rating = request.queryParams("rating");
-      String the_recipe = request.queryParams("the_recipe");
-      Recipe newRecipe = new Recipe(name, rating, the_recipe);
+      String recipe = request.queryParams("recipe");
+      Recipe newRecipe = new Recipe(name, rating, recipe);
       newRecipe.save();
       response.redirect("/recipes");
       return null;

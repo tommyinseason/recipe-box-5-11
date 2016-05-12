@@ -1,18 +1,33 @@
-<h1>Welcome to you custom recipes</h1>
+<h1>Welcome to you custom recipes cookbook</h1>
+<h2>Click below to see a list of all food categories or recipes saved, Or add your own.</h2>
 
-#foreach ($category in $categories)
-  <p><a href="/categories/$category.getId()">$category.getName()</a></p>
-#end
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <h3><a href="/categories">Categories</a></h3>
+      #foreach ($category in $categories)
+        <p><a href="/categories/$category.getId()">$category.getName()</a></p>
+      #end
+    </div>
+    <div class="col-md-6">
+      <h3><a href="/recipes">Recipes</a></h3>
+      #foreach ($recipe in $recipes)
+        <p><a href="/recipes/$recipe.getId()">$recipe.getName()/Rating: $recipe.getRating()</a></p>
+      #end
+    </div>
+  </div>
+</div>
 
 
-<form action='/categories' method='post'>
+
+
+
+
+<!-- <form action='/categories' method='post'>
   <div class="form-group">
     <label for="name">Enter a New Category:</label>
     <input type= "text" class="form-control" id="name" name="name">
   </div>
   <button class="btn" type="submit">Submit</button>
 </form>
-<h1>Recipes!</h1>
-
-<h3><a href="/categories">Categories</a></h3>
-<h3><a href="/recipes">Recipes</a></h3>
+<h1>Recipes!</h1> -->

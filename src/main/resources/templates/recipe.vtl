@@ -1,13 +1,15 @@
 <h1>$recipe.getName()</h1>
+<h2>Rating: $recipe.getRating()</h2>
+<h2>The Recipe: $recipe.getRecipe()</h2>
 
 #if($recipe.getCategories())
   <p>Here are the categories for this recipe:</p>
-  <ul>
-    #foreach($category in $recipe.getCategories())
-      <li>$category.getName()</li>
-    #end
-  </ul>
+  #foreach($category in $recipe.getCategories())
+    <p><a href="/categories/$category.getId()">$category.getName()</a></p>
+  #end
 #end
+
+
 
 <h4>Add a category to this recipe:</h4>
 

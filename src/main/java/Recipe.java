@@ -6,12 +6,12 @@ public class Recipe {
   private int id;
   private String name;
   private String rating;
-  private String the_recipe;
+  private String recipe;
 
-  public Recipe(String name, String rating, String the_recipe) {
+  public Recipe(String name, String rating, String recipe) {
     this.name = name;
     this.rating = rating;
-    this.the_recipe = the_recipe;
+    this.recipe = recipe;
   }
 
   public String getName() {
@@ -25,11 +25,11 @@ public class Recipe {
     return rating;
   }
   public String getRecipe() {
-    return the_recipe;
+    return recipe;
   }
 
   public static List<Recipe> all() {
-    String sql = "SELECT id, name, rating, the_recipe FROM recipes";
+    String sql = "SELECT id, name, rating, recipe FROM recipes ORDER BY rating ASC";
     try(Connection con = DB.sql2o.open()) {
       return con.createQuery(sql).executeAndFetch(Recipe.class);
     }
@@ -48,11 +48,11 @@ public class Recipe {
 
   public void save() {
     try(Connection con = DB.sql2o.open()) {
-      String sql = "INSERT INTO recipes(name, rating, the_recipe) VALUES (:name, :rating, :the_recipe)";
+      String sql = "INSERT INTO recipes(name, rating, recipe) VALUES (:name, :rating, :recipe)";
       this.id = (int) con.createQuery(sql, true)
         .addParameter("name", this.name)
         .addParameter("rating", this.rating)
-        .addParameter("the_recipe", this.the_recipe)
+        .addParameter("recipe", this.recipe)
         .executeUpdate()
         .getKey();
     }
@@ -70,11 +70,11 @@ public class Recipe {
 
   public void update(String newName) {
     try(Connection con = DB.sql2o.open()) {
-      String sql = "UPDATE recipes SET name = :name, rating = :rating, the_recipe = :the_recipe WHERE id = :id ";
+      String sql = "UPDATE recipes SET name = :name, rating = :rating, recipe = :recipe WHERE id = :id ";
       con.createQuery(sql)
         .addParameter("name", newName)
         .addParameter("rating", this.rating)
-        .addParameter("the_recipe", this.the_recipe)
+        .addParameter("recipe", this.recipe)
         .addParameter("id", this.id)
         .executeUpdate();
     }
